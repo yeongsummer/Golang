@@ -1,8 +1,20 @@
 package main
 
-func main() {
-	r := Rect{10., 20.}
-	c := Circle{10}
+import "github.com/gin-gonic/gin"
 
-	ShowArea(r, c)
+func setupRouter() *gin.Engine {
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.String(200, "pong")
+	})
+
+	r.GET("/hi", func(c *gin.Context) {
+		c.String(200, "bye")
+	})
+	return r
+}
+
+func main() {
+	r := setupRouter()
+	r.Run(":8080")
 }

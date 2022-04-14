@@ -17,15 +17,14 @@ func main() {
 	var wg sync.WaitGroup
 
 	for i := 1; i <= 5; i++ {
-		fmt.Println(i)
 		wg.Add(1)
-		i := i
+		//i := i
 
 		go func() {
 			defer wg.Done()
-			fmt.Println(i)
 			worker(i)
 		}()
+
 	}
 	wg.Wait()
 	fmt.Println("Finish")
